@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Mohamed Nazmy's professional portfolio and CV, showcasing expertise in Agile Product Ownership and Flutter development.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Mohamed Nazmy CV">
+  <link rel="apple-touch-icon" href="icons/logo.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/logo.png"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <title>Mohamed Nazmy CV</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root {
+      --primary-color: #2A2A2A; /* Dark charcoal for professionalism */
+      --accent-color: #4A90E2; /* Subtle blue for trust and focus */
+      --background-color: #F8F9FA; /* Light grey for clean backdrop */
+      --text-color: #1A1A1A; /* Near-black for high contrast */
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: var(--background-color);
+    }
+
+    #splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash-text {
+      font-family: 'Roboto Slab', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    #splash-subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--text-color);
+      text-align: center;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+
+    #splash-role {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--accent-color);
+      text-align: center;
+      margin-top: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 4px;
+      background: #E0E0E0;
+      margin-top: 20px;
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.8s ease 0.6s;
+    }
+
+    .progress-bar-fill {
+      width: 0;
+      height: 100%;
+      background: var(--accent-color);
+      transition: width 3s ease;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      #splash-text {
+        font-size: 2.5rem;
+      }
+      #splash-subtitle {
+        font-size: 1.4rem;
+      }
+      #splash-role {
+        font-size: 1.1rem;
+      }
+      .progress-bar {
+        width: 100px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      #splash-text {
+        font-size: 2rem;
+      }
+      #splash-subtitle {
+        font-size: 1.2rem;
+      }
+      #splash-role {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Splash screen -->
+<div id="splash">
+  <div id="splash-text">Mohamed Nazmy</div>
+  <div id="splash-subtitle">Professional Portfolio & CV</div>
+  <div id="splash-role">Agile Product Owner</div>
+  <div class="progress-bar">
+    <div class="progress-bar-fill"></div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+  // Animation logic
+  const splash = document.getElementById('splash');
+  const splashText = document.getElementById('splash-text');
+  const splashSubtitle = document.getElementById('splash-subtitle');
+  const splashRole = document.getElementById('splash-role');
+  const progressBar = document.querySelector('.progress-bar');
+  const progressBarFill = document.querySelector('.progress-bar-fill');
+  let flutterLoaded = false;
+
+  // Trigger animations on load
+  window.addEventListener('load', () => {
+    splashText.style.opacity = '1';
+    splashText.style.transform = 'translateY(0)';
+    splashSubtitle.style.opacity = '1';
+    splashSubtitle.style.transform = 'translateY(0)';
+    splashRole.style.opacity = '1';
+    splashRole.style.transform = 'translateY(0)';
+    progressBar.style.opacity = '1';
+    progressBarFill.style.width = '100%';
+  });
+
+  // Track Flutter app load
+  window.addEventListener('flutter-first-frame', () => {
+    flutterLoaded = true;
+  });
+
+  // Transition out after progress bar completes or Flutter is ready
+  setTimeout(() => {
+    splash.classList.add('hidden');
+    setTimeout(() => {
+      splash.remove();
+    }, 1000); // Match transition duration
+  }, 4000); // 3s progress bar + 1s buffer
+
+  // Handle resize for centering
+  window.addEventListener('resize', () => {
+    splash.style.width = window.innerWidth + 'px';
+    splash.style.height = window.innerHeight + 'px';
+  });
+</script>
+<script src="flutter.js" defer></script>
+<script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>

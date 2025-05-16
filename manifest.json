@@ -1,0 +1,23 @@
+{
+    "name": "Mohamed Nazmy",
+    "short_name": "Mohamed Nazmy CV",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Mohamed Nazmy is a seasoned Product Owner at Banque Misr, driving large-scale digital onboarding initiatives, agile product development, and customer-centric banking innovation with a proven track record of delivering impact at scale.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
